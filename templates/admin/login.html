@@ -1,0 +1,43 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'admin/custom.css' %}">
+{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block content %}
+<div class="nh-login-card">
+  <div class="nh-login-header">
+    <div class="nh-logo">NH</div>
+    <div>
+      <div class="nh-brand-title">Nakshatra Health</div>
+      <div class="nh-brand-subtitle">Admin Sign In</div>
+    </div>
+  </div>
+  <form action="{% url 'admin:login' %}" method="post" id="login-form">{% csrf_token %}
+    {% if form.errors and not form.non_field_errors %}
+      <p class="errornote">Please correct the error below.</p>
+    {% endif %}
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <p class="errornote">{{ error }}</p>
+      {% endfor %}
+    {% endif %}
+    <div class="form-row">
+      {{ form.username.label_tag }}
+      {{ form.username }}
+    </div>
+    <div class="form-row">
+      {{ form.password.label_tag }}
+      {{ form.password }}
+    </div>
+    <div class="submit-row">
+      <input type="submit" value="Log in">
+      <input type="hidden" name="next" value="{{ next }}">
+    </div>
+  </form>
+</div>
+{% endblock %}

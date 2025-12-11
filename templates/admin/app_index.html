@@ -1,0 +1,8 @@
+{% extends "admin/app_index.html" %}
+
+{% block breadcrumbs %}
+  <div class="nh-breadcrumb-actions">
+    <a href="{% url 'admin:index' %}" class="nh-back-btn">← Back to dashboard</a>
+  </div>
+  {{ block.super }}
+{% endblock %}
