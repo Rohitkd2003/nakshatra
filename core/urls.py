@@ -21,7 +21,7 @@ urlpatterns = [
     path("api/patients/", include("patients.urls")),
     path("api/consultations/", include("consultations.urls")),
     path("api/nutrition/", include("nutrition.urls")),
-    path("api/fitness/", include("fitness.urls")),
+      path("api/fitness/", include("fitness.urls")),
     path("api/meditation/", include("meditation.urls")),
     path("api/metrics/", include("metrics.urls")),
     path("api/resources/", include("resources.urls")),

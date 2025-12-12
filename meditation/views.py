@@ -14,7 +14,17 @@ class MeditationSessionListView(generics.ListAPIView):
     queryset = MeditationSession.objects.all()
     serializer_class = MeditationSessionSerializer
 
+# GET session by id
+class MeditationSessionDetailView(generics.RetrieveAPIView):
+    queryset = MeditationSession.objects.all()
+    serializer_class = MeditationSessionSerializer
+
 # GET list plans
 class PlanListView(generics.ListAPIView):
+    queryset = MeditationPlan.objects.all()
+    serializer_class = MeditationPlanSerializer
+
+# GET plan by id
+class PlanDetailView(generics.RetrieveAPIView):
     queryset = MeditationPlan.objects.all()
     serializer_class = MeditationPlanSerializer

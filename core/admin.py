@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.contrib.admin.sites import NotRegistered
-from django.contrib.auth.models import Group
 from rest_framework.authtoken.models import Token
 from community.models import Post, Comment
 import types
@@ -14,14 +13,13 @@ def safe_unregister(model):
 
 
 # Unregister unwanted models
-for mdl in (Token, Group, Post, Comment):
+for mdl in (Token, Post, Comment):
     safe_unregister(mdl)
 
 
 # Additionally hide them from app list/navigation
 HIDDEN_MODELS = {
     "authtoken.token",
-    "auth.group",
     "community.post",
     "community.comment",
 }

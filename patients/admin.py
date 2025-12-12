@@ -70,12 +70,12 @@ class PatientAdmin(BaseUserAdmin):
     """Custom Patient Admin for separate 'Patients' panel"""
 
     fieldsets = (
-        (None, {"fields": ("email", "password")}),
+        (None, {"fields": ("email", "full_name", "phone", "password")}),
     )
     add_fieldsets = (
         (None, {
             "classes": ("wide",),
-            "fields": ("email", "password1", "password2"),
+            "fields": ("email", "full_name", "phone", "password1", "password2"),
         }),
     )
 
@@ -91,11 +91,10 @@ class PatientAdmin(BaseUserAdmin):
         "last_name",
         "username",
         "role",
-        "phone",
     )
 
-    list_display = ("id", "email")
-    search_fields = ("email",)
+    list_display = ("id", "email", "full_name", "phone")
+    search_fields = ("email", "full_name", "phone")
     ordering = ["email"]
 
     inlines = [
@@ -131,4 +130,3 @@ class PatientAdmin(BaseUserAdmin):
             "change": True,
             "delete": True,
         }
-
